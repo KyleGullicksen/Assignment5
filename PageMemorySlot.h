@@ -5,8 +5,11 @@
 #ifndef ASSIGNMENT5_MEMORYSLOT_H
 #define ASSIGNMENT5_MEMORYSLOT_H
 
-class PageMemorySlot {
-
+class PageMemorySlot
+{
+public:
+    unsigned int readCount = 0;
+    unsigned int writeCount = 0;
 };
 
 

@@ -20,7 +20,7 @@ protected:
     vector<int> & references;
     PageReplacementAlgorithm * pageReplacement = nullptr;
     Process * runningProcess = nullptr;
-    PageMemory memory;
+    PageMemory pageMemory;
 
 public:
     Simulator(unsigned long physicalMemorySizeInBytes, unsigned long pageSizeInBytes, vector<int> &references,
