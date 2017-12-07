@@ -6,9 +6,8 @@
 #define ASSIGNMENT5_SIMULATOR_H
 
 #include <vector>
-#include "pageReplacementAlgorithms/PageReplacementAlgorithm.h"
+#include "pageReplacementAlgorithms/Paging.h"
 #include "Process.h"
-#include "PageMemory.h"
 
 using std::vector;
 
@@ -17,14 +16,15 @@ class Simulator
 protected:
     unsigned long physicalMemorySizeInBytes = 0;
     unsigned long pageSizeInBytes = 0;
+
+    vector<int> memory;
     vector<int> & references;
-    PageReplacementAlgorithm * pageReplacement = nullptr;
+    Paging * paging = nullptr;
     Process * runningProcess = nullptr;
-    PageMemory pageMemory;
 
 public:
     Simulator(unsigned long physicalMemorySizeInBytes, unsigned long pageSizeInBytes, vector<int> &references,
-              PageReplacementAlgorithm *pageReplacement);
+              Paging *pageReplacement);
 
     void run();
 };

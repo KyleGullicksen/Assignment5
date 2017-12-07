@@ -6,14 +6,15 @@
 #define ASSIGNMENT5_PAGEREPLACEMENTALGORITHM_H
 
 
-#include "../PageMemory.h"
+#include "../PageCache.h"
 
-class PageReplacementAlgorithm
+class Paging
 {
 protected:
-    PageMemory * pageMemory;
+    PageCache cache;
 public:
-    
+    virtual bool read(int address) = 0;
+    virtual bool write(int address) = 0;
 };
 
 

@@ -6,11 +6,10 @@
 
 
 Simulator::Simulator(unsigned long physicalMemorySizeInBytes, unsigned long pageSizeInBytes, vector<int> &references,
-                     PageReplacementAlgorithm *pageReplacement) : physicalMemorySizeInBytes(physicalMemorySizeInBytes),
+                     Paging *pageReplacement) : physicalMemorySizeInBytes(physicalMemorySizeInBytes),
                                                                   pageSizeInBytes(pageSizeInBytes),
                                                                   references(references),
-                                                                  pageReplacement(pageReplacement),
-                                                                  pageMemory(physicalMemorySizeInBytes, pageSizeInBytes)
+                                                                  paging(pageReplacement)
 {
 
 }
@@ -19,16 +18,16 @@ Simulator::Simulator(unsigned long physicalMemorySizeInBytes, unsigned long page
 void Simulator::run()
 {
     //Record the start time and the end time as well
-    int slotNumber = 0;
+    int virtualAddress = 0;
 
-    for(int reference : references)
+    for(int virtualAddressWithReadWriteBit : references)
     {
-        slotNumber = reference / 10;
+        virtualAddress = virtualAddressWithReadWriteBit / 10;
 
-        if((reference % 10) % 2) //If the least sig bit is even, than read the given slot number
-            pageMemory.read(slotNumber);
+        if((virtualAddressWithReadWriteBit % 10) % 2) //If the least sig bit is even, than read the given slot number
+            paging->read(virtualAddress);
         else
-            pageMemory.write(slotNumber);
+            paging->write(virtualAddress);
     }
 }
 

@@ -102,7 +102,8 @@ int main(int argc, char ** argv)
     cout << "Course: CS433 (Operating Systems)" << endl;
     cout << "Description : Analyzes efficiency of random, FIFO, and LRU\n page replacement algorithms with a given page size and\nphysical pageMemory size on a machine with 128 MB of logical pageMemory." << endl;
 
-    PageReplacementAlgorithm * pageReplacementAlgorithm = nullptr;
+    Paging * pageReplacementAlgorithm = nullptr;
 
     Simulator simulator(commandLineOptions.physicalRamSizeInBytes, commandLineOptions.pageSizeInBytes, references, pageReplacementAlgorithm);
+    simulator.run();
 }
